@@ -6,7 +6,7 @@ import { GET_ALL_ITEMS, GET_ALL_CATEGORIES } from './utils/queries';
 
 function App() {
   const { error, loading, data } = useQuery(GET_ALL_CATEGORIES);
-  data ? console.log(data) : console.log(error);
+  data ? console.log(data.getAllCategories) : console.log(error.message);
 
   const categoryData = data.getAllCategories;
 
@@ -17,15 +17,13 @@ function App() {
           return (
             <div key={cat._id} className='category_wrapper'>
               <h1>{cat.categoryName}</h1>
+              <ul className='list'>
               {cat.categoryItems.map((item) => {
                 return (
-                  <div key={item._id}>
-                    <ul>
-                      <li>{item.itemName}</li>
+                      <li key={item._id}>{item.itemName}</li>
+                      )
+                    })}
                     </ul>
-                  </div>
-                )
-              })}
             </div>
           )
         })
