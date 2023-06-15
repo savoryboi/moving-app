@@ -6,12 +6,13 @@ import { GET_ALL_ITEMS, GET_ALL_CATEGORIES } from './utils/queries';
 
 function App() {
   const { error, loading, data } = useQuery(GET_ALL_CATEGORIES);
-  data ? console.log(data.getAllCategories) : console.log(error.message);
+  data ? console.log(data.getAllCategories) : console.log(error);
 
   const categoryData = data.getAllCategories;
 
   return (
     <div className="App">
+      <div className='list_container'>
       {
         categoryData.map((cat) => {
           return (
@@ -28,6 +29,7 @@ function App() {
           )
         })
       }
+      </div>
     </div>
   );
 }
