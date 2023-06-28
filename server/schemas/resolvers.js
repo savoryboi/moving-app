@@ -23,10 +23,10 @@ const resolvers = {
 
     Mutation: {
         async addItem(_, args) {
-            const { itemName, itemCategory } = args;
+            const { itemName, itemCategory, itemTag } = args;
       
             // Create the item
-            const newItem = await Item.create({ itemName, itemCategory });
+            const newItem = await Item.create({ itemName, itemCategory, itemTag });
             
             // Update the associated category
             const category = await Category.findById(itemCategory);

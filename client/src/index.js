@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -10,24 +10,26 @@ const client = new ApolloClient({
 });
 
 // retrieving api data from client side
-client
-  .query({
-    query: gql`
-      query getAllCategories {
-        getAllCategories {
-          _id
-          categoryName
-          categoryItems {
+  client
+    .query({
+      query: gql`
+        query getAllCategories {
+          getAllCategories {
             _id
-            itemName
-            itemCategory
+            categoryName
+            categoryItems {
+              _id
+              itemName
+              itemCategory
+            }
+            
           }
-          
         }
-      }
-    `,
-  })
-  .then((result) => console.log(result));
+      `,
+    })
+    .then((result) => console.log(result.data))
+
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

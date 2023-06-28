@@ -13,6 +13,12 @@ const itemSchema = new Schema({
         required: true, 
         min: 1,
         max: 100
+    }, 
+    itemTag: {
+        type: String, 
+        required:true, 
+        min: 1, 
+        max: 20
     }
 })
 

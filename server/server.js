@@ -23,7 +23,9 @@ async function startServer(typeDefs, resolvers) {
     await server.start();
   
     server.applyMiddleware({ app });
-  
+    
+    db.on('error', console.error.bind(console, 'Connection error:'));
+    
     db.once("open", () => {
       app.listen(PORT, () => {
         console.log("Express started on port %s", PORT);

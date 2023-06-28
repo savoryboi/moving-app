@@ -5,6 +5,7 @@ const typeDefs = gql`
         _id: ID!
         itemName: String!
         itemCategory: ID!
+        itemTag: String!
     }
     type Category {
         _id: ID!
