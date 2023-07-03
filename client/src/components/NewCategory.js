@@ -4,24 +4,21 @@ import { useState } from 'react';
 
 function NewCategory(client) {
     const [categoryName, setCategoryName] = useState('');
-    const [addNewCategory, {loading, error}] = useMutation(ADD_CATEGORY);
+    const [addCategory, {data, loading, error}] = useMutation(ADD_CATEGORY);
 
-    const handleSubmit = (e) =>{
+    const handleSubmit = async (e) =>{
          e.preventDefault()
         console.log(categoryName)
-        
-        addNewCategory( { variables: {categoryName} } )
-        .then((response) => {
-            // Handle successful mutation
-            console.log('Category added:', response);
-          })
-          .catch((error) => {
-            // Handle mutation error
-            console.error('Mutation error:', error);
-          });
 
-          setCategoryName('');
-        };
+        addCategory({variables: {categoryName: categoryName}})
+            .then(response => {
+                console.log('Category added: ' + categoryName, response )
+            })
+            .catch(error => console.log(error))
+
+        setCategoryName('');
+        
+    };
 
     return (
         <div className='new_category_wrapper'>

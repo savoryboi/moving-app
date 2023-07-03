@@ -5,7 +5,12 @@ export const ADD_CATEGORY = gql`
         addCategory(categoryName: $categoryName) {
             _id
             categoryName
-            categoryItems
+            categoryItems {
+                _id
+                itemName
+                itemCategory
+                itemTag
+            }
         }
     }
 `;
