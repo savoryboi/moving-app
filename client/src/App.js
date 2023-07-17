@@ -2,7 +2,7 @@ import { useQuery, gql } from '@apollo/client';
 import './App.css';
 import List from './components/List';
 import { GET_ALL_ITEMS, GET_ALL_CATEGORIES } from './utils/queries';
-import NewCategory from './components/NewCategory';
+import NewCategory from './components/NewCategory/NewCategory';
 
 
 function App(props) {
@@ -16,7 +16,7 @@ function App(props) {
     <div className="App">
       <NewCategory></NewCategory>
       <div className='list_container'>
-      {
+      {/* {
         categoryData ?
         categoryData.map((cat) => {
           return (
@@ -35,7 +35,7 @@ function App(props) {
         : <div id='noCategoriesYet'> 
           <h1>You have not created any categorues yet!</h1>
           </div>
-      }
+      } */}
       </div>
     </div>
   );

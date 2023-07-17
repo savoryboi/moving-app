@@ -1,0 +1,39 @@
+.new_category_wrapper {
+    display: flex;
+    justify-content: center;
+}
+h1 {
+    font-family: sans-serif;
+    font-size: small;
+    margin: 15px 0;
+    text-align: center;
+}
+
+input {
+    border-radius: 5px;
+    border: none;
+    background-color:lavender;
+    width: 12em;
+    height: 2em;
+    margin: 10px;
+    padding-left: 5px;
+}
+
+input:focus, textarea:focus{
+    outline: none!important;
+    border: 1.5px rgb(255, 20, 98) solid!important;
+}
+
+button {
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: darkslateblue;
+    color: whitesmoke;
+    transition: .3s;
+}
+
+button:hover {
+    background-color: honeydew;
+    color: darkslateblue;
+}

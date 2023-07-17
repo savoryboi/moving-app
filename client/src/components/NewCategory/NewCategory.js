@@ -1,6 +1,7 @@
-import { ADD_CATEGORY } from '../utils/mutations';
+import { ADD_CATEGORY } from '../../utils/mutations';
 import { useMutation, gql } from '@apollo/client';
 import { useState } from 'react';
+import './NewCategory.css';
 
 function NewCategory(client) {
     const [categoryName, setCategoryName] = useState('');
@@ -12,7 +13,7 @@ function NewCategory(client) {
 
         addCategory({variables: {categoryName: categoryName}})
             .then(response => {
-                console.log('Category added: ' + categoryName, response )
+                console.log('Category added: ' + categoryName, response.data )
             })
             .catch(error => console.log(error))
 
@@ -22,15 +23,14 @@ function NewCategory(client) {
 
     return (
         <div className='new_category_wrapper'>
-            <h1>Add New List Category</h1>
             <form className='new_category_form' onSubmit={handleSubmit}>
-                <label>Category Name</label>
                 <input 
                     type="text"
                     value={categoryName}
+                    placeholder='New List Category...'
                     onChange={(e)=> setCategoryName(e.target.value)}
                     ></input>
-                <button type='submit'>Add Category</button>
+                <button type='submit'>Create</button>
             </form>
         </div>
     )

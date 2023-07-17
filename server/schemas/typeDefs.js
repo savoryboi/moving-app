@@ -13,17 +13,27 @@ const typeDefs = gql`
         categoryItems: [Item]
     }
 
+    type User {
+        _id: ID!
+        username: String!
+        password: String!
+        myCategories: [Category]
+        household: ID
+    }
+
     type Query {
         getAllItems: [Item]
         getOneItem(id: ID!): Item
         getAllCategories: [Category]
         getOneCategory(id:ID!): Category
+        getOneUser:(id: ID!): User
+        getAllUsers: [User]
     }
 
     type Mutation {
         addItem(itemName: String!, itemCategory: ID!): Item! 
         addCategory(categoryName: String!): Category!
-   
+        addUser(username: String!, password: String!, household: ID): User!
     }
 `;
 

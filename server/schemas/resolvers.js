@@ -1,6 +1,7 @@
 const { ApolloError } = require("apollo-server-express");
 const Item = require('../models/Item');
 const Category = require('../models/Category');
+const User = require('../models/User');
 
 const resolvers = {
     Query: {
@@ -18,6 +19,14 @@ const resolvers = {
         async getOneCategory(_, args) {
             const category = await Category.findById(args.id).populate("categoryItems")
             return category;
+        }, 
+        async getOneUser(_, args) {
+            const user = await User.findById(args.id);
+            return user;
+        },
+        async getAllUsers(_, args) {
+            const users = await User.find();
+            return users;
         }
     },
 
@@ -43,6 +52,14 @@ const resolvers = {
             return await Category.create({
                 categoryName
             });
+        }, 
+
+        async addUser(_, { username, password, household} ) {
+            return await User.create({
+                username,
+                password, 
+                household
+            })
         }
     }
 }
